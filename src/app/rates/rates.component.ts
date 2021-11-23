@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ExchangeRateApiService } from "../exchange-rate-api.service";
+import { ExchangeRate } from "../models/exchange-rate.model";
 
 @Component({
   selector: "app-rates",
@@ -7,6 +8,7 @@ import { ExchangeRateApiService } from "../exchange-rate-api.service";
   styleUrls: ["./rates.component.scss"]
 })
 export class RatesComponent implements OnInit {
+  rates?: ExchangeRate[];
 
   constructor(private api: ExchangeRateApiService) {}
 
@@ -14,7 +16,9 @@ export class RatesComponent implements OnInit {
   }
 
   async getRates() {
-    const rates = await this.api.getRates("usd");
-    console.log(rates);
+    const response = await this.api.getRates("usd");
+
+    this.rates = [...response?.rates];
+    console.log(response?.rates);
   }
 }
