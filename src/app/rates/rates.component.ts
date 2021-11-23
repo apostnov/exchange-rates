@@ -14,10 +14,13 @@ export class RatesComponent implements OnInit {
   ratesSource = new MatTableDataSource<IRateModel>();
   displayedColumns: (keyof IRateModel)[] = ["ticker", "rate"];
   rates: IRateModel[] = [];
+  tickers: CurrencyTicker[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private api: ExchangeRateApiService) {}
+  constructor(private api: ExchangeRateApiService) {
+    this.tickers = ExchangeRateApiService.tickers;
+  }
 
   ngOnInit(): void {
   }

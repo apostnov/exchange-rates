@@ -5,7 +5,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from "@angular/material/button";
 import { MatPaginatorModule } from "@angular/material/paginator";
-
+import { MatSelectModule } from "@angular/material/select";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -24,7 +28,12 @@ import { RatesComponent } from "./rates/rates.component";
     HttpClientModule,
     MatPaginatorModule,
     MatButtonModule,
+    MatSelectModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [ParameterIsDateGuard],
   bootstrap: [AppComponent]
