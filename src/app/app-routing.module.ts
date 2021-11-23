@@ -5,13 +5,13 @@ import { RatesComponent } from "./rates/rates.component";
 
 const routes: Routes = [
   {
-    path: "",
-    component: RatesComponent,
-  },
-  {
-    path: ":date",
+    path: ":ticker/:date",
     component: RatesComponent,
     canActivate: [ParameterIsDateGuard]
+  },
+  {
+    path: "**",
+    component: RatesComponent,
   }
 ];
 

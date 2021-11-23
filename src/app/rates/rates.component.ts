@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
+import { ActivatedRoute, Params } from "@angular/router";
 
 import { ExchangeRateApiService } from "../exchange-rate-api.service";
 import { CurrencyTicker, IRateModel } from "../models/exchange-rate.model";
@@ -10,19 +11,30 @@ import { CurrencyTicker, IRateModel } from "../models/exchange-rate.model";
   templateUrl: "./rates.component.html",
   styleUrls: ["./rates.component.scss"]
 })
-export class RatesComponent implements OnInit {
+export class RatesComponent implements OnInit, AfterViewInit {
   ratesSource = new MatTableDataSource<IRateModel>();
   displayedColumns: (keyof IRateModel)[] = ["ticker", "rate"];
   rates: IRateModel[] = [];
   tickers: CurrencyTicker[];
+  ticker: CurrencyTicker = "GBP";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private api: ExchangeRateApiService) {
+  constructor(private api: ExchangeRateApiService, private readonly route: ActivatedRoute) {
     this.tickers = ExchangeRateApiService.tickers;
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params)=> {
+      const ticker = params["ticker"]?.toUpperCase();
+
+      if (ticker != null && this.tickers.indexOf(ticker) !== -1) {
+        this.ticker = ticker;
+      } 
+    });
+
+
+    this.getRates();
   }
 
   ngAfterViewInit() {
@@ -30,7 +42,7 @@ export class RatesComponent implements OnInit {
   }
 
   async getRates() {
-    const response = await this.api.getRates("usd");
+    const response = await this.api.getRates(this.ticker);
 
     if (response == null) {
       alert("error");
