@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ActivatedRoute } from "@angular/router";
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { of } from "rxjs";
 
 import { RatesComponent } from "./rates.component";
 import { ExchangeRateApiService } from "../exchange-rate-api.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 const paramsMock = { ticker: "usd", date: "11.11.2020" };
 const activatedRouteMock = { params: of(paramsMock) };
@@ -18,7 +19,7 @@ describe("RatesComponent", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RatesComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         ExchangeRateApiService,
         {
@@ -56,7 +57,7 @@ describe("RatesComponent on root route", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
         declarations: [RatesComponent],
-        imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
         providers: [
           ExchangeRateApiService,
           {

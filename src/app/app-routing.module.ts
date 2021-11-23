@@ -8,6 +8,9 @@ const routes: Routes = [
     path: ":ticker/:date",
     component: RatesComponent,
     canActivate: [ParameterIsDateGuard]
+  },  {
+    path: ":ticker",
+    component: RatesComponent,
   },
   {
     path: "**",

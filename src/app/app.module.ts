@@ -16,6 +16,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ParameterIsDateGuard } from "./auth/parameter-is-date.guard";
 import { RatesComponent } from "./rates/rates.component";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RatesComponent } from "./rates/rates.component";
     HttpClientModule,
     FormsModule,
     MatPaginatorModule,
+    MatSortModule,
     MatButtonModule,
     MatSelectModule,
     MatTableModule,
