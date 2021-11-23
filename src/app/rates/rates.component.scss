@@ -1,0 +1,20 @@
+table {
+  width: 50%;
+
+  &, * {
+    font-family: sans-serif !important;
+    font-size: 12pt !important;
+  }
+}
+
+.content {
+  padding: 20px;
+  margin: 20px;
+}
+
+
+@media screen and (max-width: 800px) {
+  table {
+    width: 100%;
+  }
+}

@@ -1,1 +1,25 @@
-<button (click)="getRates()">get</button>
+<div class="mat-elevation-z8 content">
+  <button (click)="getRates()" mat-raised-button color="primary">Get</button>
+  <mat-paginator [pageSizeOptions]="[10, 50,  200]"
+                 [pageSize]="10"
+                 showFirstLastButtons
+                 aria-label="Select page">
+  </mat-paginator>
+  <table mat-table [dataSource]="ratesSource">
+    <!-- Ticker Column -->
+    <ng-container matColumnDef="ticker">
+      <th mat-header-cell *matHeaderCellDef> Ticker </th>
+      <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+    </ng-container>
+
+    <!-- Rate Column -->
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef> Rate </th>
+      <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
