@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 
 import { ExchangeRateApiService } from "./exchange-rate-api.service";
@@ -6,7 +7,9 @@ describe("ExchangeRateApiService", () => {
   let service: ExchangeRateApiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
     service = TestBed.inject(ExchangeRateApiService);
   });
 

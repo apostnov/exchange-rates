@@ -15,9 +15,10 @@ export class RatesComponent implements OnInit, AfterViewInit {
   ratesSource = new MatTableDataSource<IRateModel>();
   displayedColumns: (keyof IRateModel)[] = ["ticker", "rate"];
   rates: IRateModel[] = [];
+  ratesDate = new Date();
   tickers: CurrencyTicker[];
   ticker: CurrencyTicker = "GBP";
-
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private api: ExchangeRateApiService, private readonly route: ActivatedRoute) {
@@ -30,9 +31,15 @@ export class RatesComponent implements OnInit, AfterViewInit {
 
       if (ticker != null && this.tickers.indexOf(ticker) !== -1) {
         this.ticker = ticker;
-      } 
-    });
+      }
 
+      const ratesDate = params["date"] && new Date(params["date"]);
+
+      if (ratesDate.toString() !== "Invalid Date") {
+        this.ratesDate = ratesDate;
+      }
+
+    });
 
     this.getRates();
   }
