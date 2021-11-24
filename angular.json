@@ -105,9 +105,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "exceedra-exchangerates"
+  "defaultProject": "exceedra-exchangerates",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

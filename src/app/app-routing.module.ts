@@ -5,22 +5,22 @@ import { ParameterIsDateGuard } from "./auth/parameter-is-date.guard";
 import { RatesComponent } from "./rates/rates.component";
 
 const routes: Routes = [
-  {
-    path: ":ticker/:date",
-    component: RatesComponent,
-    canActivate: [ParameterIsDateGuard]
-  },  {
-    path: ":ticker",
-    component: RatesComponent,
-  },
-  {
-    path: "**",
-    component: RatesComponent,
-  }
+    {
+        path: ":ticker/:date",
+        component: RatesComponent,
+        canActivate: [ParameterIsDateGuard]
+    }, {
+        path: ":ticker",
+        component: RatesComponent,
+    },
+    {
+        path: "**",
+        component: RatesComponent,
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

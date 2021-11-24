@@ -4,16 +4,16 @@ import { TestBed } from "@angular/core/testing";
 import { ExchangeRateApiService } from "./exchange-rate-api.service";
 
 describe("ExchangeRateApiService", () => {
-  let service: ExchangeRateApiService;
+    let service: ExchangeRateApiService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [HttpClientTestingModule],
+        });
+        service = TestBed.inject(ExchangeRateApiService);
     });
-    service = TestBed.inject(ExchangeRateApiService);
-  });
 
-  it("should be created", () => {
-    expect(service).toBeTruthy();
-  });
+    it("should be created", () => {
+        expect(service).toBeTruthy();
+    });
 });

@@ -19,27 +19,27 @@ import { ParameterIsDateGuard } from "./auth/parameter-is-date.guard";
 import { RatesComponent } from "./rates/rates.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RatesComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatTableModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule
-  ],
-  providers: [ParameterIsDateGuard],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RatesComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatTableModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule
+    ],
+    providers: [ParameterIsDateGuard],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

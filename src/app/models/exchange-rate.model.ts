@@ -3,12 +3,12 @@ export type CurrencyTicker = "USD" | "AED" | "AFN" | "ALL" | "AMD" | "ANG" | "AO
 export type ExchangeRate = { [TKey in CurrencyTicker]: number };
 
 export interface IExchangeResponse {
-  base: CurrencyTicker;
-  date: string;
-  rates: ExchangeRate;
+    base: CurrencyTicker;
+    date: string;
+    rates: ExchangeRate;
 }
 
 export interface IRate {
-  ticker: CurrencyTicker;
-  rate: number;
+    ticker: CurrencyTicker;
+    rate: number;
 }
