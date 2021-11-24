@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
+import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Params, Router } from "@angular/router";
@@ -23,7 +24,11 @@ export class RatesComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
-    constructor(private readonly api: ExchangeRateApiService, private readonly route: ActivatedRoute, private readonly router: Router) {
+    constructor(
+        private readonly api: ExchangeRateApiService,
+        private readonly route: ActivatedRoute,
+        private readonly router: Router,
+        private readonly matSnackBar: MatSnackBar) {
         this.tickers = ExchangeRateApiService.tickers;
     }
 
@@ -71,8 +76,21 @@ export class RatesComponent implements OnInit, AfterViewInit {
             });
 
             this.ratesSource.data = this.rates;
-        } catch (e) {
-            alert(e);
+            this.matSnackBar.open("Rates received successfully.", undefined,
+                {
+                    duration: 1000
+                });
+        } catch (e: unknown) {
+            const errorConfig: MatSnackBarConfig = {
+                verticalPosition: "top",
+                horizontalPosition: "right"
+            }
+
+            if (typeof e === "string") {
+                this.matSnackBar.open(e, "OK", errorConfig);
+            } else {
+                this.matSnackBar.open("Inknown error", "OK", errorConfig);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import { of } from "rxjs";
 
 import { RatesComponent } from "./rates.component";
 import { ExchangeRateApiService } from "../exchange-rate-api.service";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const paramsMock = { ticker: "usd", date: "11.11.2020" };
 const activatedRouteMock = { params: of(paramsMock) };
@@ -20,7 +21,7 @@ describe("RatesComponent",
         beforeEach(async () => {
             await TestBed.configureTestingModule({
                 declarations: [RatesComponent],
-                imports: [HttpClientTestingModule, RouterTestingModule],
+                imports: [HttpClientTestingModule, RouterTestingModule, MatSnackBarModule],
                 providers: [
                     ExchangeRateApiService,
                     {
@@ -63,7 +64,7 @@ describe("RatesComponent on root route",
         beforeEach(async () => {
             await TestBed.configureTestingModule({
                 declarations: [RatesComponent],
-                imports: [HttpClientTestingModule, RouterTestingModule],
+                imports: [HttpClientTestingModule, RouterTestingModule, MatSnackBarModule],
                 providers: [
                     ExchangeRateApiService,
                     {

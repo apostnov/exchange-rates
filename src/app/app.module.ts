@@ -8,6 +8,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSelectModule } from "@angular/material/select";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { BrowserModule } from "@angular/platform-browser";
@@ -38,7 +39,8 @@ import { HttpErrorInterceptor } from "./services/http-interceptor";
         MatDatepickerModule,
         MatNativeDateModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatSnackBarModule
     ],
     providers: [ParameterIsDateGuard,
         { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
