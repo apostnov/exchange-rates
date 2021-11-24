@@ -23,7 +23,7 @@ export class RatesComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
-    constructor(private api: ExchangeRateApiService, private readonly route: ActivatedRoute, private readonly router: Router) {
+    constructor(private readonly api: ExchangeRateApiService, private readonly route: ActivatedRoute, private readonly router: Router) {
         this.tickers = ExchangeRateApiService.tickers;
     }
 
@@ -55,21 +55,24 @@ export class RatesComponent implements OnInit, AfterViewInit {
     }
 
     async getRates() {
-        const response = await this.api.getRates(this.ticker);
+        try {
+            const response = await this.api.getRates(this.ticker);
 
-        if (response == null) {
-            alert("error");
-            return;
-        }
-
-        this.rates = Object.keys(response.rates).map((key: string) => {
-            const ticker = key as CurrencyTicker;
-            return {
-                ticker: ticker,
-                rate: response.rates[ticker]
+            if (response == null) {
+                throw "Empty response";
             }
-        });
 
-        this.ratesSource.data = this.rates;
+            this.rates = Object.keys(response.rates).map((key: string) => {
+                const ticker = key as CurrencyTicker;
+                return {
+                    ticker: ticker,
+                    rate: response.rates[ticker]
+                }
+            });
+
+            this.ratesSource.data = this.rates;
+        } catch (e) {
+            alert(e);
+        }
     }
 }

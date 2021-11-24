@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -17,6 +17,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ParameterIsDateGuard } from "./auth/parameter-is-date.guard";
 import { RatesComponent } from "./rates/rates.component";
+import { HttpErrorInterceptor } from "./services/http-interceptor";
 
 @NgModule({
     declarations: [
@@ -39,7 +40,9 @@ import { RatesComponent } from "./rates/rates.component";
         MatFormFieldModule,
         MatInputModule
     ],
-    providers: [ParameterIsDateGuard],
+    providers: [ParameterIsDateGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
