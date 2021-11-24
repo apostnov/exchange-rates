@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { ParameterIsDateGuard } from "./auth/parameter-is-date.guard";
-import { RatesComponent } from "./rates/rates.component";
+import { ParameterIsDateGuard } from "src/app/auth/parameter-is-date.guard";
+import { RatesComponent } from "src/app/rates/rates.component";
 
 const routes: Routes = [
     {

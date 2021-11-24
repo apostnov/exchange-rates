@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { CurrencyTicker, IExchangeResponse } from "./models/exchange-rate.model";
+import { CurrencyTicker, IExchangeResponse } from "src/app/models/exchange-rate.model";
 
 @Injectable({
     providedIn: "root"

@@ -2,12 +2,12 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ActivatedRoute } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { of } from "rxjs";
 
-import { RatesComponent } from "./rates.component";
-import { ExchangeRateApiService } from "../exchange-rate-api.service";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { RatesComponent } from "src/app/rates/rates.component";
+import { ExchangeRateApiService } from "src/app/services";
 
 const paramsMock = { ticker: "usd", date: "11.11.2020" };
 const activatedRouteMock = { params: of(paramsMock) };

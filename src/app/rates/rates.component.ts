@@ -5,8 +5,8 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
-import { ExchangeRateApiService } from "../exchange-rate-api.service";
-import { CurrencyTicker, IRate } from "../models/exchange-rate.model";
+import { ExchangeRateApiService } from "src/app/services";
+import { CurrencyTicker, IRate } from "src/app/models/exchange-rate.model";
 
 @Component({
     selector: "app-rates",
