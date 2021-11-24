@@ -5,7 +5,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
 import { ExchangeRateApiService } from "../exchange-rate-api.service";
-import { CurrencyTicker, IRateModel } from "../models/exchange-rate.model";
+import { CurrencyTicker, IRate as IRateModel } from "../models/exchange-rate.model";
 
 @Component({
   selector: "app-rates",

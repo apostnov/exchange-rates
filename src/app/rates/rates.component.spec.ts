@@ -40,11 +40,11 @@ describe("RatesComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("should should have ticker provided in route", () => {
+  it("should have ticker provided in route", () => {
     expect(component.ticker === "USD").toBeTrue();
   });
 
-  it("should should have datepicker value provided in route", () => {
+  it("should have datepicker value provided in route", () => {
     expect(component.ratesDate).toEqual(new Date(paramsMock.date));
   });
 });
@@ -78,11 +78,11 @@ describe("RatesComponent on root route", () => {
     expect(component).toBeTruthy();
   });
 
-  it("should should have default ticker", () => {
+  it("should have default ticker", () => {
     expect(component.ticker === "GBP").toBeTrue();
   });
 
-  it("should should have datepicker not empty", () => {
+  it("should have datepicker not empty", () => {
     expect(component.ratesDate).toBeTruthy();
   });
 });

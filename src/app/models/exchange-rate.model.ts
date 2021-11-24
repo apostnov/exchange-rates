@@ -8,7 +8,7 @@ export interface IExchangeResponse {
   rates: ExchangeRate;
 }
 
-export interface IRateModel {
+export interface IRate {
   ticker: CurrencyTicker;
   rate: number;
 }
